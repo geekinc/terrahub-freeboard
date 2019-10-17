@@ -199,7 +199,7 @@
 
 		this.updateNow = function () {
 			$.ajax({
-				url: "http://api.openweathermap.org/data/2.5/weather?APPID="+currentSettings.api_key+"&q=" + encodeURIComponent(currentSettings.location) + "&units=" + currentSettings.units,
+				url: "https://api.openweathermap.org/data/2.5/weather?APPID="+currentSettings.api_key+"&q=" + encodeURIComponent(currentSettings.location) + "&units=" + currentSettings.units,
 				dataType: "JSONP",
 				success: function (data) {
 					// Rejigger our data into something easier to understand
@@ -568,7 +568,7 @@ freeboard.loadDatasourcePlugin({
                 // **required** : Set to true if this setting is required for the datasource to be created.
                 "required" : true
 			}
-			
+
 		],
 		// **newInstance(settings, newInstanceCallback, updateCallback)** (required) : A function that will be called when a new instance of this plugin is requested.
 		// * **settings** : A javascript object with the initial settings set by the user. The names of the properties in the object will correspond to the setting names defined above.
@@ -594,11 +594,11 @@ freeboard.loadDatasourcePlugin({
 		// Good idea to create a variable to hold on to our settings, because they might change in the future. See below.
 		var currentSettings = settings;
 
-		
+
 
 		/* This is some function where I'll get my data from somewhere */
 
- 	
+
 		function getData()
 		{
 
@@ -606,11 +606,11 @@ freeboard.loadDatasourcePlugin({
 		 var conn = skynet.createConnection({
     		"uuid": currentSettings.uuid,
     		"token": currentSettings.token,
-    		"server": currentSettings.server, 
+    		"server": currentSettings.server,
     		"port": currentSettings.port
-  				});	
-			 
-			 conn.on('ready', function(data){	
+  				});
+
+			 conn.on('ready', function(data){
 
 			 	conn.on('message', function(message){
 
@@ -622,7 +622,7 @@ freeboard.loadDatasourcePlugin({
 			 });
 			}
 
-	
+
 
 		// **onSettingsChanged(newSettings)** (required) : A public function we must implement that will be called when a user makes a change to the settings.
 		self.onSettingsChanged = function(newSettings)
@@ -641,7 +641,7 @@ freeboard.loadDatasourcePlugin({
 		// **onDispose()** (required) : A public function we must implement that will be called when this instance of this plugin is no longer needed. Do anything you need to cleanup after yourself here.
 		self.onDispose = function()
 		{
-		
+
 			//conn.close();
 		}
 
